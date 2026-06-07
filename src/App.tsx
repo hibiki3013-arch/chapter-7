@@ -1,6 +1,6 @@
 import Header from './components/Header/Header.tsx';
 import Blog from './components/Blog/Blog.tsx';
-import Inquiry from './components/inquiry/Inquiry.tsx';
+import Inquiry from './components/Inquiry/Inquiry.tsx';
 import Article from './components/Article/Article.tsx'; 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 

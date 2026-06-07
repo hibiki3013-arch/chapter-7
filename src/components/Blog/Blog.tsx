@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
 import styles from './Blog.module.css';
 import { Link } from 'react-router-dom';
+import { type Post } from '../../data/post';
 
-type Post = {
-  id:string;
-  title:string;
-  content:string;
-  createdAt:string;
-  categories:string[];
-};
 export default function Blog() {
     const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true)

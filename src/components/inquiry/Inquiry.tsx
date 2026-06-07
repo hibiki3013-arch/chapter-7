@@ -1,16 +1,12 @@
 import { useState } from 'react';
 import styles from './Inquiry.module.css';
-
-type Errors = {
-  name?:string;
-  email?:string;
-  message?:string;
-}
+import { type Errors } from '../../data/InquiryData';
+import { type InquiryData } from '../../data/InquiryData';
 
 export default function Inquiry() {
   const [formDate,setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<Errors>({});
-  const [isSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const validate = () => {
     let newErrors:Errors  = {};
 
@@ -29,6 +25,7 @@ export default function Inquiry() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     if(validate()){
       try {
         const response = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts", {
@@ -36,7 +33,7 @@ export default function Inquiry() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formDate)
+        body: JSON.stringify(formDate as InquiryData)
       });
 
       if(response.ok){
@@ -52,10 +49,11 @@ export default function Inquiry() {
   }catch (error) {
     console.error("Error:", error);
     alert("送信に失敗しました");
+  }finally {
+    setIsSubmitting(false);
   }
-}
-};
-
+  };
+  }
   return (
     <form className={styles.formInquiry} onSubmit={handleSubmit}>
       <div className={styles.form}>問合わせフォーム</div>

@@ -1,14 +1,7 @@
 import {useState, useEffect} from 'react';
 import styles from './Article.module.css';
 import {useParams} from 'react-router-dom';
-
-type Post = {
-  id:string;
-  title:string;
-  content:string;
-  createdAt:string;
-  categories:string[];
-};
+import { type Post } from '../../data/post';
 
 export default function Article() {
 
