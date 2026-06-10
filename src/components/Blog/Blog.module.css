@@ -1,0 +1,47 @@
+.PostCard{
+    border: 1px solid #808080;
+    padding: 30px 100px 30px 30px;
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    gap: 10px;
+}
+
+.PostCardBetween{
+    display: flex;
+    justify-content: space-between;
+}
+
+.PostCardData{
+    font-size: 12px;
+    color: #808080;
+}
+
+.PostCardCategory{
+    display: flex;
+    gap: 5px;
+}
+
+.CategoryDetail{
+    font-size: 12px;
+    color: #0066cc;
+    border: 1px solid #0066cc;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.PostCardTitle{
+    font-size: 24px;
+}
+
+.PostCardArticle{
+    font-size: 16px;
+    white-space: pre-wrap;
+    display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
