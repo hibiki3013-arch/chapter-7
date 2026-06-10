@@ -7,11 +7,6 @@ export default function Inquiry() {
   const [formDate,setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<Errors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const body: InquiryData = {
-    name: formDate.name,
-    email: formDate.email,
-    message: formDate.message
-  };
   const validate = () => {
     const newErrors:Errors  = {};
 
@@ -33,6 +28,11 @@ export default function Inquiry() {
     setIsSubmitting(true);
     if(validate()){
       try {
+          const body: InquiryData = {
+           name: formDate.name,
+           email: formDate.email,
+           message: formDate.message
+           };
         const response = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts", {
         method: "POST",
         headers: {
