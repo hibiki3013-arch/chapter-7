@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import styles from './Article.module.css';
 import {useParams} from 'react-router-dom';
-import { type Post } from '../../data/post';
+import { type Post } from '../../types/post';
 
 export default function Article() {
 

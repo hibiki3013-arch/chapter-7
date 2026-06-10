@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import styles from './Inquiry.module.css';
-import { type Errors } from '../../data/InquiryData';
-import { type InquiryData } from '../../data/InquiryData';
+import { type InquiryData } from '../../types/InquiryData';
+import { type Errors } from '../../types/InquiryData';
 
 export default function Inquiry() {
   const [formDate,setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<Errors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const body: InquiryData = {
+    name: formDate.name,
+    email: formDate.email,
+    message: formDate.message
+  };
   const validate = () => {
-    let newErrors:Errors  = {};
+    const newErrors:Errors  = {};
 
     if(!formDate.name) newErrors.name = 'お名前を入力してください';
     else if(formDate.name.length > 30) newErrors.name = 'お名前は30文字以内で入力してください';
@@ -33,7 +38,7 @@ export default function Inquiry() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(formDate as InquiryData)
+        body: JSON.stringify(body)
       });
 
       if(response.ok){
@@ -54,6 +59,7 @@ export default function Inquiry() {
   }
   };
   }
+
   return (
     <form className={styles.formInquiry} onSubmit={handleSubmit}>
       <div className={styles.form}>問合わせフォーム</div>

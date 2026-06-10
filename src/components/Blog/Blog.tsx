@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './Blog.module.css';
 import { Link } from 'react-router-dom';
-import { type Post } from '../../data/post';
+import { type Post } from '../../types/post';
 
 export default function Blog() {
     const [posts, setPosts] = useState<Post[]>([]);
